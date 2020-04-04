@@ -17,13 +17,6 @@ public class writeExcel {
      */
 
     public void writeSingleCellData(String filePath) throws IOException {
-        /*
-        1. create a workbook
-        2. create a sheet in workbook above
-        3. Create a row in above sheet
-        4. Create a cell in above row
-        5. Set data inside cell.
-         */
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("First Sheet");
         Row row = sheet.createRow(0);
@@ -53,7 +46,6 @@ public class writeExcel {
                 cell.setCellValue(dataArray[i][j]);
             }
         }
-
         // write workbook on output stream
         File file = new File(filePath);
         FileOutputStream fos = new FileOutputStream(file);
