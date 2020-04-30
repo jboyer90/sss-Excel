@@ -6,19 +6,14 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class writeExcel {
-    /*
-        1. single data in excel
-        2. multiple data row in excel
-     */
 
     public void writeSingleCellData(String filePath) throws IOException {
         Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("First Sheet");
+        Sheet sheet = workbook.createSheet("Employee Info");
         Row row = sheet.createRow(0);
         Cell cell = row.createCell(0);
         cell.setCellValue("Employee ID");
@@ -37,11 +32,13 @@ public class writeExcel {
         Sheet sheet = workbook.createSheet("First Sheet");
 
         // getRandomDataArray[]
-        int[][] dataArray = getRandomDataArray(6,5);
-        for (int i=0;i<dataArray.length;i++){
+        int row1 = 6;
+        int col = 5;
+        int[][] dataArray = getRandomDataArray(row1, col);
+        for (int i=0;i<row1;i++){
             Row row =sheet.createRow(i);
             row.createCell(0);
-            for(int j=0;j<dataArray.length;i++){
+            for(int j=0;j<col;j++){
                 Cell cell = row.createCell(j);
                 cell.setCellValue(dataArray[i][j]);
             }
@@ -58,8 +55,8 @@ public class writeExcel {
     private int[][] getRandomDataArray(int row, int col) {
         int[][] dataArray = new int[row][col];
 
-        for (int i =0;i<dataArray.length;i++){
-            for (int j=0;j<dataArray.length;i++){
+        for (int i =0;i<row;i++){
+            for (int j=0;j<col;j++){
                 dataArray[i][j] = (int)(Math.random()*1000);
             }
         }
